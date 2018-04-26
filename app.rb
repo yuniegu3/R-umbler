@@ -27,7 +27,7 @@ post '/user/login' do
 end
 
 #create new users
-get '/user/create' do
+get '/user/signup' do
 
 end
 #create user
@@ -76,14 +76,27 @@ get '/blog/:id'
 
 end
 
-# displays specific blog by id..might need blog_id fk along with post_id probably need a joined table search. - dont need to be logged in
+# displays specific blog by id..might need user_id fk along with post_id probably need a joined table search. - dont need to be logged in...
 get '/blog/post/:id' do
 
 end
 
+# displays same tagged posts
+
+get '/post/tags'
+
+end
+
+#create tag for user signed in (need to be signed in to tag posts)
+get '/user/post/tags/tagit' do
+
+end
 
 
+# creates tag
+post '/user/post/tags/new' do
 
+    redirect '/'
+end
 
-
-
+#....do i really want a edit tags function?
