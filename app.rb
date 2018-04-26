@@ -1,8 +1,13 @@
 require 'sinatra'
 require "sinatra/activerecord"
 
+require_relative './models/blog'
+require_relative './models/post'
+require_relative './models/user'
+require_relative './models/tag'
+require_relative './models/posttag'
 
-set :database, {adapter: 'postgresql', database: 'rumblerprojectdb'}
+set :database, {adapter: 'postgresql', database: 'rumblerdb'}
 enable :sessions
 
 # display home page 
@@ -27,7 +32,7 @@ post '/user/login' do
 end
 
 #create new users
-get '/user/create' do
+get '/user/signup' do
 
 end
 #create user
@@ -72,18 +77,31 @@ end
 
 
 #displays all posts in blog format for specific user - dont need to be logged in 
-get '/blog/:id'
+get '/blog/:id' do
 
 end
 
-# displays specific blog by id..might need blog_id fk along with post_id probably need a joined table search. - dont need to be logged in
+# displays specific blog by id..might need user_id fk along with post_id probably need a joined table search. - dont need to be logged in...
 get '/blog/post/:id' do
 
 end
 
+# displays same tagged posts
+
+get '/post/tags' do
+
+end
+
+#create tag for user signed in (need to be signed in to tag posts)
+get '/user/post/tags/tagit' do
+
+end
 
 
+# creates tag
+post '/user/post/tags/new' do
 
+    redirect '/'
+end
 
-
-
+#....do i really want a edit tags function?
