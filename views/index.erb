@@ -1,1 +1,74 @@
 <h1>Hello Yunie, I hope you know this is due Monday so dont get lazy.</h1>
+
+<div>
+<p> Give me User info! </p>
+	<% @users.each do |user| %>
+	<p> <%= user.first_name %> </p>
+	<p> <%= user.last_name %> </p>
+	<p> <%= user.email %> </p>
+	<p> <%= user.password %> </p>
+	<p> <%= user.birth_date %> </p>
+
+<% end %>
+</div>
+
+<div>
+	<p>Give me Blog info for Yunie</p>
+	<p> <% @yblog.user_id %> </p>
+	<p> <% @yblog.blog_name %> </p>
+
+	
+</div>
+
+<div>
+	<p>Give me Blog info for Test</p>
+
+	<p> <% @tblog.user_id %> </p>
+	<p> <% @tblog.blog_name %> </p>
+
+</div>
+
+<div>
+	<p>Give me Post info for Blog Yunie</p>
+	<% @yposts.each do |post| %>
+	<p> <%= post.post_name%> </p>
+	<p> <%= post.blog_id %> </p>
+	<p> <%= post.content %> </p>
+	<% end %>
+
+</div>
+
+
+<div>
+	<p>Give me Post info for Blog Test</p>
+	<% @tposts.each do |post| %>
+	<p> <%= post.post_name%> </p>
+	<p> <%= post.blog_id %> </p>
+	<p> <%= post.content %> </p>
+	<% end %>
+	
+</div>
+
+<div>
+	<p>Give me all tags</p>
+	<% @tags.each do |tag| %>
+	<p> <%= tag.tag_name%> </p>
+	<% end %>
+
+	
+</div>
+
+
+
+<div>
+	<p>Give me Post info for 2nd Tag</p>
+	<% @displaypost.each do |tagged| %>
+	<p> <%= tagged.post_name  %> </p>
+	<p> <%= tagged.blog_id %> </p>
+	<p> <%= tagged.content %> </p>
+
+	<% end %>
+	
+</div>
+
+
