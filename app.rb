@@ -1,8 +1,13 @@
 require 'sinatra'
 require "sinatra/activerecord"
 
+require_relative './models/blog'
+require_relative './models/post'
+require_relative './models/user'
+require_relative './models/tag'
+require_relative './models/posttag'
 
-set :database, {adapter: 'postgresql', database: 'rumblerprojectdb'}
+set :database, {adapter: 'postgresql', database: 'rumblerdb'}
 enable :sessions
 
 # display home page 
@@ -72,7 +77,7 @@ end
 
 
 #displays all posts in blog format for specific user - dont need to be logged in 
-get '/blog/:id'
+get '/blog/:id' do
 
 end
 
@@ -83,7 +88,7 @@ end
 
 # displays same tagged posts
 
-get '/post/tags'
+get '/post/tags' do
 
 end
 
