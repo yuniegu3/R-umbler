@@ -5,7 +5,7 @@ require_relative './models/blog'
 require_relative './models/post'
 require_relative './models/user'
 require_relative './models/tag'
-require_relative './models/posttag'
+require_relative './models/post_tag'
 
 set :database, {adapter: 'postgresql', database: 'rumblerdb'}
 enable :sessions
@@ -15,9 +15,9 @@ get '/' do
 	#checking if user is rendering, should give me all users
 	@users = User.all
 	# should give me blog by Yunie - could probably do something with log in thing so w/e user is logged in can be directed to their blog via id.
-	@yblog = Blog.find_by_user_id(1)
+	@yblog = Blog.where(user_id: 1)
 	# should give me blog by test
-	@tblog = Blog.find_by_user_id(2)
+	@tblog = Blog.where(user_id: 2)
 	# should give me all post by blog yunie via blog_id 1
 	@yposts = Post.where(blog_id: 1).all
 	# should give me all post by blog test via blod id 2
@@ -25,12 +25,12 @@ get '/' do
 	#show all tags
 	@tags = Tag.all
 	# should give me all posts with tag 2 from both yunie blog and test blog
-	tagged_post = Post_tag.where(tag_id:2).all
-	posts = tagged_post.pluck(:post_id) #gives array of nums (post_id)
-	posts.each do |x| 
-	Post.find_by_post_id(x)
-	end
-	
+	# tagged_post = Post_tag.where(tag_id:2).all
+	x = Post_tag.where(tag_id:2)
+	@y = x.pluck(:post_id)
+
+
+
 
 	erb :index
 end
