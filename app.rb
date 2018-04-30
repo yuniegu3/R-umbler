@@ -14,6 +14,7 @@ enable :sessions
 # display home page 
 get '/' do
 	@users = User.all
+
 	#checking if user is rendering, should give me all users
 	# @yblog = Blog.where(user_id: 1)
 	# # should give me blog by test
@@ -92,7 +93,7 @@ end
 
 # edits the User data with w/e user editted.
 put '/user/:id' do
-   @user = User.find(session[:id]) 
+   @user = User.find(session[:id])
    @user.update(first_name: params[:first_name], last_name: params[:last_name], password: params[:password], birth_date: params[:birth_date])
    erb :profile
 end
@@ -100,7 +101,7 @@ end
 
 #deletes user (have dependency - blog_id so that blog dies with user and post will die with blog)
 delete '/user/:id' do
-  	@user = User.find(session[:id]) 
+  	@user = User.find(session[:id])
   	@user.destroy
   	session.clear
     erb :deleted #maybe i'll have a successfully deleted page here
@@ -108,13 +109,13 @@ end
 
 #User can edit blog name
 get '/user/blog/:id/edit' do
-	@user = User.find(session[:id]) 
+	@user = User.find(session[:id])
 	@blog = Blog.find_by(user_id: @user.id)
 	erb :edit_blog
 end
 
 put '/user/blog/' do
-	@user = User.find(session[:id]) 
+	@user = User.find(session[:id])
 	@blog = Blog.find_by(user_id: @user.id)
 	@blog.update(user_id: @user.id , blog_name: params[:blog_name])
 	redirect '/user/blog/myblog'
@@ -138,7 +139,7 @@ end
 #and in the :my_blog the @posts is only used if it exists. I will still need if statement here but it is doable with 
 # 1 erb page.
 get '/user/blog/myblog' do
-	@user = User.find(session[:id]) 
+	@user = User.find(session[:id])
 	@blog = Blog.find_by(user_id: @user.id)
 	if Post.where(blog_id:@blog.id) == 0
 		erb :my_blog
@@ -152,7 +153,7 @@ end
 
 # have users be able to edit their own posts - specific post will be grabbed by id
 get '/user/post/:post/edit' do
-	@user = User.find(session[:id]) 
+	@user = User.find(session[:id])
 	@blog = Blog.find_by(user_id: @user.id)
 	@posts = Post.find(params[:post])
 	erb :edit_post
@@ -248,8 +249,9 @@ end
 
 #displays all posts  - dont need to be logged in  - post mvp maybe limit to how many posts show up?
 # maybe get a tab thingy working os its like 100 posts in 1 page.
+# made limit 20 to meet project requirement.
 get '/blogs/posts' do
-	@posts = Post.all
+	@posts = Post.limit(20)
 
 	erb :all_posts
 end
