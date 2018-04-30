@@ -15,18 +15,18 @@ enable :sessions
 get '/' do
 	@users = User.all
 	#checking if user is rendering, should give me all users
-	@yblog = Blog.where(user_id: 1)
-	# should give me blog by test
-	@tblog = Blog.where(user_id: 2)
-	# should give me all post by blog yunie via blog_id 1
-	@yposts = Post.where(blog_id: 1).all
-	# should give me all post by blog test via blod id 2
-	@tposts = Post.where(blog_id: 2).all
-	#show all tags
-	@tags = Tag.all
-	# should give me all posts with tag 2 from both yunie blog and test blog 
-	x = Post_tag.where(tag_id:2)
-	@y = x.pluck(:post_id)
+	# @yblog = Blog.where(user_id: 1)
+	# # should give me blog by test
+	# @tblog = Blog.where(user_id: 2)
+	# # should give me all post by blog yunie via blog_id 1
+	# @yposts = Post.where(blog_id: 1).all
+	# # should give me all post by blog test via blod id 2
+	# @tposts = Post.where(blog_id: 2).all
+	# #show all tags
+	# @tags = Tag.all
+	# # should give me all posts with tag 2 from both yunie blog and test blog 
+	# x = Post_tag.where(tag_id:2)
+	# @y = x.pluck(:post_id)
 
 	#there must be another way to do this...maybe Tag.where(id:2).posts but this donest work...i thought it would but nope!
 
