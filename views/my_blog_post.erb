@@ -15,17 +15,23 @@
 
 
 <div class="container">
-<% if session[:id] != nil %>
+<h1>  <%= @blog.blog_name %> </h1>
+
+<p><a href="/user/post/create"> Create New Post </a></p>
+
      <% @posts.each do |post| %> 
       <p> post name: <%= post.post_name%> </p>
       <p> post content: <%= post.content %> </p>
+      <p><a href=/user/post/<%= post.id %>/tags/tagit> Add Tag </a></p>
+          <% if Post_tag.where(post_id: post.id) != nil %>
+            <% x = Post_tag.where(post_id: post.id) %>
+              <% y = x.pluck(:tag_id) %>
+              <% y.each do |tag| %>
+              <p><a href=/blogs/posts/tags/<%= tag %>> #<%= Tag.find_by(id: tag).tag_name %>  </a></p>
+              <p><a href=/user/posts/<%= post.id %>/tags/<%= tag %>/edit> Edit Tag </a></p>
            <% end %>
-          <br>
-          
-      <% else %>
-          <% @posts.each do |post| %> 
-          <p> post name: <%= post.post_name%> </p>
-          <p> post content: <%= post.content %> </p>
           <% end %>
-      <% end %>
-  </div>
+          <br>
+          <% end %>
+
+</div>

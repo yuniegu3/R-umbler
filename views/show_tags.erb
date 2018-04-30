@@ -15,6 +15,6 @@
 
 
   <% @all_tags.each do |tag|%>
-<p><a href=/blogs/posts/tags/<%= tag.id %>> #<%= Tag.find_by(id: tag.id).tag_name %> </a></p>
+  <p><a href=/blogs/posts/tags/<%= tag.id %>> #<%= Tag.find_by(tag_name: tag.tag_name).tag_name %> </a></p>
   <br>
-<% end %>
+  <% end %>

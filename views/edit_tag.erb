@@ -5,7 +5,7 @@
 </form>
 
 
-<form action="/user/posts/<%= @posts.id %>/tags/<%= @tag.id %>" method="post">
+<form action="/user/posts/<%= @posts.id %>/tags/<%= @tag.id %>/delete" method="post">
   <input type="hidden" name="_method" value="DELETE">
   <button type="submit"> Delete Tag </button>
 </form>
