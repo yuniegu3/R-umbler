@@ -136,9 +136,10 @@ end
 get '/user/blog/myblog' do
 	@user = User.find(session[:id]) 
 	@blog = Blog.find_by(user_id: @user.id)
-	if Post.where(blog_id:@blog.id) == nil
+	if Post.where(blog_id:@blog.id) == 0
 		erb :my_blog
-	elsif Post.where(blog_id:@blog.id) != nil
+	end
+	if Post.where(blog_id:@blog.id) != 0
 		@posts = Post.where(blog_id:@blog.id)
 		erb :my_blog_post
 
@@ -228,7 +229,7 @@ put '/user/posts/:post/tags/:tag' do
 end
 
 #delete tag
-delete '/user/posts/:post/tags/:tag' do
+delete '/user/posts/:post/tags/:tag/delete' do
 	@user = User.find(session[:id])
 	@blog = Blog.find_by(user_id: @user.id)
 	@posts = Post.find(params[:post])
@@ -258,6 +259,7 @@ end
 # displays all same tagged posts
 
 get '/blogs/posts/tags/:tag' do
+	@specific_tag = Tag.find(params[:tag])
 	x = Post_tag.where(tag_id: params[:tag])
 	@y = x.pluck(:post_id)
 	erb :show_posts_by_tag
