@@ -15,17 +15,9 @@
 
 
 <div class="container">
-<% if session[:id] != nil %>
      <% @posts.each do |post| %> 
       <p> post name: <%= post.post_name%> </p>
       <p> post content: <%= post.content %> </p>
-           <% end %>
           <br>
-          
-      <% else %>
-          <% @posts.each do |post| %> 
-          <p> post name: <%= post.post_name%> </p>
-          <p> post content: <%= post.content %> </p>
           <% end %>
-      <% end %>
   </div>

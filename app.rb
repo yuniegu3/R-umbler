@@ -72,9 +72,10 @@ get '/signup' do
 
 end
 
-#create user
+#create user 
 post '/user/new' do
-	 if @user == nil
+	all_users = User.all
+	 if all_users.find_by(email: params[:email]) == nil
 	 	User.create(first_name: params[:first_name], last_name: params[:last_name], password: params[:password], email: params[:email], birth_date: params[:birth_date])
 	 redirect '/user/login'
 	else
@@ -132,7 +133,10 @@ post '/user/blog/new' do
 
 end
 
-#user blog site
+#user blog site - gives error when user does not have posts and trys to go :my_blog_post...now that I think about it,
+#this could of worked with if/else statement in :my_blog/:my_blog_post so that @posts is made only when post exists
+#and in the :my_blog the @posts is only used if it exists. I will still need if statement here but it is doable with 
+# 1 erb page.
 get '/user/blog/myblog' do
 	@user = User.find(session[:id]) 
 	@blog = Blog.find_by(user_id: @user.id)
