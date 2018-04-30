@@ -1,0 +1,48 @@
+   <nav>
+    <div class="nav-wrapper">
+      <a href="/" class="brand-logo left"><img src="images/logo.jpeg" height="73"></a>
+      <ul id="nav-mobile" class="right">
+        <li><a href="/user/login">Login/Sign Up</a></li>
+        <li><a href="/logout">Logout</a></li>
+        <li><a href="/user/:id/profile">My Profile</a></li>
+        <li><a href="/user/blog/myblog">My Blog</a></li>
+        <li><a href="/blogs/posts">All Blogs</a></li>
+        <li><a href="/blog/posts/tags">All Tags</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+
+<div class="container">
+<% if session[:id] != nil %>
+     <% @posts.each do |post| %> 
+      <p> post name: <%= post.post_name%> </p>
+      <p> post content: <%= post.content %> </p>
+      <p><a href=/user/post/<%= post.id %>/tags/tagit> Add Tag </a></p>
+          <% if Post_tag.where(post_id: post.id) != nil %>
+            <% x = Post_tag.where(post_id: post.id) %>
+              <% y = x.pluck(:tag_id) %>
+              <% y.each do |tag| %>
+              <p><a href=/blogs/posts/tags/<%= tag %>> #<%= Tag.find_by(id: tag).tag_name %>  </a></p>
+           <% end %>
+          <% end %>
+          <br>
+          <% end %>
+      <% else %>
+          <% @posts.each do |post| %> 
+          <p> post name: <%= post.post_name%> </p>
+          <p> post content: <%= post.content %> </p>
+        <p><a href='/user/login'>Must log in to Tag </a></p>
+              <% if Post_tag.where(post_id: post.id) != nil %>
+                <% x = Post_tag.where(post_id: post.id) %>
+                <% y = x.pluck(:tag_id) %>
+                <% y.each do |tag| %>
+              <p><a href=/blogs/posts/tags/<%= tag %>> #<%= Tag.find_by(id: tag).tag_name %> </a></p>
+            <% end %>
+            <% end %>
+            <br>
+            <% end %>
+
+      <% end %>
+  </div>

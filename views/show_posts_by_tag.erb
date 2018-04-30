@@ -13,21 +13,9 @@
   </nav>
 
 
-<div class="container">
-<h1>Hello Yunie, I hope you know this is due Monday so dont get lazy.</h1>
-
-
-<h1 class="center"> Welcome to R-umbler!</h1> 
-
-<h3 class="center">Please <a href="/signup">sign up</a> or <a href="/user/login">sign in</a> to create your own blog! </h3>
-
-<div class="container">
-<img src="images/a.png">
-
-
-<h2 class="center"> Current R-umbler Users: <%= @users.length %> </h2>
-
-</div>
-</div>
-
-
+<% @y.each do |post|%>
+<% Post.find_by(id: post) %>
+<p> name :<%= Post.find_by(id: post).post_name %></p>
+	<p> post content: <%= Post.find_by(id: post).content %> </p>
+	<br>
+<% end %>

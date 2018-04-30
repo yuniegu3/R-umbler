@@ -1,0 +1,11 @@
+<form action="/user/posts/<%= @posts.id %>/tags/<%= @tag.id %>" method="post">
+  <input type="hidden" name="_method" value="PUT">
+  <input type="text" name="tag_name" value="<%= @tag.tag_name %>">
+  <button type="submit"> Edit Tag </button>
+</form>
+
+
+<form action="/user/posts/<%= @posts.id %>/tags/<%= @tag.id %>" method="post">
+  <input type="hidden" name="_method" value="DELETE">
+  <button type="submit"> Delete Tag </button>
+</form>
