@@ -8,7 +8,7 @@ require_relative './models/user'
 require_relative './models/tag'
 require_relative './models/post_tag'
 
-set :database, {adapter: 'postgresql', database: 'rumblerdb'}
+#set :database, {adapter: 'postgresql', database: 'rumblerdb'}
 enable :sessions
 
 # display home page 
