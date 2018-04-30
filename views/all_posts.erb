@@ -18,6 +18,15 @@
      <% @posts.each do |post| %> 
       <p> post name: <%= post.post_name%> </p>
       <p> post content: <%= post.content %> </p>
+      <% if Post_tag.where(post_id: post.id) != nil %>
+      <% x = Post_tag.where(post_id: post.id) %>
+      <% y = x.pluck(:tag_id) %>
+      <% y.each do |tag| %>
+        <% if Tag.find_by(id: tag) != nil %>
+            <p><a href=/blogs/posts/tags/<%= tag %>> #<%= Tag.find_by(id: tag).tag_name %>  </a></p>
+        <%end%>
+              <% end %>  
+             <% end %>     
           <br>
           <% end %>
   </div>

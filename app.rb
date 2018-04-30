@@ -250,6 +250,7 @@ end
 # maybe get a tab thingy working os its like 100 posts in 1 page.
 get '/blogs/posts' do
 	@posts = Post.all
+
 	erb :all_posts
 end
 
