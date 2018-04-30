@@ -9,9 +9,9 @@ Blog.create(user_id: 2, blog_name: "Test Blog 2")
 Post.create(blog_id: 1, post_name: "Y Test Post 1", content: "I HOPE YOU WORK!!!! - you have tag 2")
 Post.create(blog_id: 1, post_name: "Y Test Post 2", content: "I HOPE YOU WORK!!!! - you dont have a tag")
 Post.create(blog_id: 2, post_name: "Test Post 1", content: "I HOPE YOU WORK!!!! - you have tag 2")
-Post.create(blog_id: 2, post_name: "Test Post 1", content: "I HOPE YOU WORK!!!! - you have tag 2")
-Post.create(blog_id: 2, post_name: "Test Post 1", content: "I HOPE YOU WORK!!!! - you have tag 1")
-
+Post.create(blog_id: 2, post_name: "Test Post 2", content: "I HOPE YOU WORK!!!! - you have tag 2")
+Post.create(blog_id: 2, post_name: "Test Post 3", content: "I HOPE YOU WORK!!!! - you have tag 1")
+Post.create(blog_id: 2, post_name: "Test Post 5", content: "I HOPE YOU WORK!!!! - you have tag 2")
 
 
 Tag.create(tag_name: "Test111")
@@ -22,4 +22,5 @@ Post_tag.create(post_id: 1, tag_id:2)
 Post_tag.create(post_id: 3, tag_id:2)
 Post_tag.create(post_id: 4, tag_id:2)
 Post_tag.create(post_id: 5, tag_id:1)
+Post_tag.create(post_id: 6, tag_id:2)
 

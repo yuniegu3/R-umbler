@@ -1,0 +1,9 @@
+<form action="/user/blog/<%= @blog.id %>/edit" method="post">
+  <input type="hidden" name="_method" value="PUT">
+  <input type="text" name="blog_name" value="<%= @blog.blog_name %>">
+
+  <button type="submit"> Edit Blog Name </button>
+</form>
+
+
+

@@ -1,0 +1,9 @@
+<form method="POST" action="/user/new">
+  <input type="text" name="first_name" placeholder="first name" required>
+  <input type="text" name="last_name" placeholder="last name" required>
+  <input type="text" name="birth_date" placeholder="yyyy-mm-dd" required>
+  <input type="text" name="email" placeholder="email" required unique>
+  <input type="text" name="password" placeholder="password" required>
+
+  <button type="submit"> Create Account </button>
+</form>
