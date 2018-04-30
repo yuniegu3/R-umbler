@@ -12,6 +12,7 @@
     </div>
   </nav>
 
+<%# @y is a array of post_id that has a common tag_id through Post_Tag db %>
 
 <% @y.each do |post|%>
 <% Post.find_by(id: post) %>
