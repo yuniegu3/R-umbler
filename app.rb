@@ -2,7 +2,11 @@ require 'sinatra'
 require "sinatra/activerecord"
 require 'bcrypt'
 
-
+require './models/blog'
+require './models/post'
+require './models/user'
+require './models/tag'
+require './models/post_tag'
 
 #set :database, {adapter: 'postgresql', database: 'rumblerdb'}
 enable :sessions
